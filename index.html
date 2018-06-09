@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Mikhaela's Home Page
+</title>
+<style>
+body{
+   background-image: url("img/bg(13).jpg");
+   background-size:100vw;
+   color:white;
+}
+.container{
+width:500px;
+overflow:hidden;
+position:absolute;
+z-index:101;
+background-color:red;
+}
+.toolbar{
+height:10%;
+color:black;
+background-color:silver;
+}
+.window{
+width:100%;
+height:90%;
+}
+.appimg{
+border-radius:50%;
+width:100%;
+}
+.appframe{
+width:500px;
+height:70%;
+background-color:silver;
+z-index:1000;
+position:fixed;
+top:25%;
+text-align:center;
+float:left;
+border-radius:2%;
+}
+.appcontainer{
+border-radius:1vw;
+width:7.5vw;
+height:7.5vw;
+float:left;
+padding:5px;
+margin:5px;
+cursor:pointer;
+background-color:#4f5766;
+}
+.arrow-up {
+position:fixed;
+width: 0;
+height: 0;
+top:21%;
+z-index:1000;
+border-left:40px solid transparent;
+border-right:40px solid transparent;
+border-bottom:40px solid silver;
+display:none;
+}
+
+.login{
+position:fixed;
+border-radius: 10px;
+z-index:10001;
+text-align:center;
+padding:10px;
+background-color:rgba(230,230,230,1);
+width:25vw;
+top:25vh;
+left:37vw;
+box-shadow:5px 5px 10px rgba(0,0,0,0.5);
+
+}
+
+</style>
+<body id="body">
+<!--
+<img id="bg" src="img/bg(13).jpg" style="position:fixed;top:0%;left:0;z-index:-100">
+
+<iframe id="bgw" src="https://codepen.io/zakerytclarke/full/eerdVr" style="position:fixed;top:-15%;left:-10%;z-index:-10;width:110vw;height:115vh;">
+</iframe>
+-->
+
+
+
+<div style="position:absolute;width:40vw;background-color:rgba(0,0,0,0.7);padding:10px;border-radius:10px;height:90vh;top:5%;right:10px;text-align:center;">
+<div style="width:100%">
+<div style="width:40%;display:inline-block;text-align:left;">
+  <h1 id="date" style="display:inline-block;">
+  5/31/17
+</h1>
+</div>
+<div style="width:40%;display:inline-block;text-align:right;">
+  <h1 id="time" style="display:inline-block;">
+  12:00
+</h1>
+</div>
+</div>
+<div class="appcontainer" onclick="newframe('Google','https://google.com')">
+<img class="appimg" src="appgoog.png">
+</div>
+<div class="appcontainer" onclick="newframe('Gmail','https://mail.google.com')">
+<img class="appimg" src="appgmail.png">
+</div>
+<div class="appcontainer" onclick="newframe('Outlook','https://lobomail.unm.edu/')"><img class="appimg" src="outlook.png"></div>
+
+<div class="appcontainer" onclick="newframe('Outlook','https://my.unm.edu/')"><img class="appimg" src="lobo.jpg"></div>
+
+<div class="appcontainer" onclick="newframe('Drive','https://drive.google.com')"><img class="appimg" src="appdrive.ico"></div>
+
+<div class="appcontainer" onclick="newframe('Outlook','https://docs.google.com/')"><img class="appimg" src="doc.png" style="border-radius:0px;"></div>
+
+<div class="appcontainer" onclick="newframe('Outlook','https://docs.google.com/presentation')"><img class="appimg" src="slides.png" style="border-radius:0px;"></div>
+
+
+<div class="appcontainer" onclick="newframe('Outlook','https://docs.google.com/spreadsheets/')"><img class="appimg" src="sheets.png" style="border-radius:0px;"></div>
+
+
+<div class="appcontainer" onclick="newframe('Xfinity','https://netflix.com/')"><img class="appimg" src="netflix.png"></div>
+
+<div class="appcontainer" onclick="newframe('Youtube','https://www.youtube.com')">
+<img class="appimg" src="appyoutube.png">
+</div>
+<div class="appcontainer" onclick="newframe('Xfinity','https://tv.xfinity.com/')"><img class="appimg" src="xfinity.png"></div>
+
+<div class="appcontainer" onclick="newframe("Desmos","https://www.desmos.com/calculator")">
+  <img class="appimg" src="appdesmos.png">
+</div>
+
+
+</div>
+
+
+
+
+</div>
+<div style="position:absolute;width:50%;background-color:rgba(0,0,0,0.7);padding:10px;border-radius:10px;min-height:90vh;top:5%;left:10px;text-align:center;">
+<h1>
+  <u>
+Mikhaela's Home Page
+</u>
+</h1>
+<p id="id01" style="font-size:125%;">
+
+</p>
+<script>
+var xmlhttp = new XMLHttpRequest();
+var url = "https://quotes.rest/qod.json";
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(arr) {
+   	var out=arr.contents.quotes[0].quote;
+  document.getElementById("id01").innerHTML = out;
+}
+</script>
+
+
+<img id="img" style="width:50%;display:inline-block;border-radius:10px;" src="img/bg(3).jpg">
+</div>
+
+
+  </body>
+<script>
+document.getElementById("img").src="img/bg("+Math.ceil(Math.random()*18)+").jpg";
+/*
+if(window.innerHeight<window.innerWidth){
+document.getElementById("bg").style.height=window.innerHeight;
+}else{
+document.getElementById("bg").style.width=window.innerWidth;
+}*/
+
+setInterval(function(){ uptime(); }, 500);
+
+function newframe(name,url){
+//document.getElementById("prgmbar").innerHTML=document.getElementById("prgmbar").innerHTML+name;
+window.open(url);
+}
+function uptime(){
+var d = new Date();
+var m=d.getMinutes();
+if(m<10){
+m="0"+m;
+}
+document.getElementById("time").innerHTML=d.getHours()+":"+m;
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+if(dd<10) {
+    dd = '0'+dd
+}
+
+if(mm<10) {
+    mm = '0'+mm
+}
+
+today = mm + '/' + dd + '/' + yyyy;
+
+document.getElementById("date").innerHTML=today;
+}
+
+
+</script>
+</body>
+</html>
